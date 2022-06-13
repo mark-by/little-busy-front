@@ -1,0 +1,21 @@
+.page-header {
+    height: 35px;
+    width: 100%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.page-header__back-button {
+    position: absolute;
+    top: 57%;
+    left: 10px;
+    transform: translate(0, -50%);
+    cursor: pointer;
+}
+
+.page-header__title {
+    font-weight: 600;
+    font-size: 18px;
+}

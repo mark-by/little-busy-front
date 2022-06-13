@@ -1,0 +1,12 @@
+.client {
+    width: 100%;
+    height: 25px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.client:hover {
+    background: #efefef;
+    cursor: pointer;
+}

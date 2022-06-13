@@ -1,0 +1,19 @@
+.horizontal-list {
+    display: flex;
+    width: 100%;
+    overflow-x: scroll;
+}
+
+.horizontal-list::-webkit-scrollbar {
+    display: none;
+}
+
+.horizontal-list__item {
+    background: white;
+    border: gray solid 1px;
+    border-radius: 10px;
+    padding: 5px 10px;
+    margin-right: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}

@@ -1,0 +1,78 @@
+.select {
+    position: relative;
+    cursor: pointer;
+    margin: 5px 0;
+    background: white;
+}
+
+.select .main-wrapper {
+    display: flex;
+    padding: 5px 10px 5px 5px;
+    justify-content: space-between;
+}
+
+.options {
+    background: inherit;
+    border: inherit;
+    width: inherit;
+    position: absolute;
+    left: 0;
+    z-index: 5;
+    border-radius: 15px;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+}
+
+.options input {
+    margin: 3px;
+    width: calc(100% - 6px);
+}
+
+.option {
+    display: flex;
+    justify-content: flex-start;
+    padding: 5px 15px;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.not-available {
+    color: #777;
+}
+
+.not-available:hover {
+    background: unset !important;
+}
+
+.option:hover {
+    background: #cecece;
+}
+
+.arrow {
+    border: solid black;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 3px;
+    height: 8px;
+    width: 8px;
+    transition: transform 0.2s;
+}
+
+.down {
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+}
+
+.up {
+    transform: rotate(-135deg) translate(-50%, -25%);
+    -webkit-transform: rotate(-135deg) translate(-50%, -25%);
+}
+
+.right {
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+}
+
+.left {
+    transform: rotate(135deg);
+    -webkit-transform: rotate(135deg);
+}

@@ -1,0 +1,57 @@
+.input {
+    padding: 5px;
+}
+
+.input p {
+    margin-bottom: 5px;
+}
+
+input {
+    border: 1px solid gray;
+    border-radius: 5px;
+    padding: 2px;
+    width: 100%;
+}
+
+input[type=submit] {
+    height: unset !important;
+    -webkit-appearance: none;
+    background: black;
+    border: none;
+    color: white;
+    font-weight: 600;
+    padding: 7px 15px;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    justify-self: self-end;
+    width: max-content;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type="color"],
+input[type="date"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="email"],
+input[type="month"],
+input[type="number"],
+input[type="password"],
+input[type="search"],
+input[type="tel"],
+input[type="text"],
+input[type="time"],
+input[type="url"],
+input[type="week"],
+select:focus,
+textarea {
+    font-size: 16px;
+}
