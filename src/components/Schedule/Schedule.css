@@ -1,0 +1,225 @@
+.schedule__day {
+    background: white;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+    border-radius: 15px;
+    position: relative;
+    height: 150px;
+    margin: 10px 0;
+    padding: 10px 10px 20px;
+}
+
+.schedule__add-event {
+    padding: 2px;
+    border-radius: 50%;
+    position: absolute;
+    bottom: 0;
+    width: 30px;
+    height: 30px;
+    right: 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+    transform: translate(20%, 20%);
+    z-index: 100;
+}
+
+.schedule__event_client-name {
+    transform-origin: 0 100%;
+    transform: rotate(-90deg) translate(0, 50%);
+    width: 120px;
+    color: #a5292a;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    text-align: center;
+    font-size: 12px;
+}
+
+.schedule__row {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: space-between;
+    position: relative;
+}
+
+.active {
+    background: lightslategray !important;
+    color: white;
+}
+
+.schedule__line {
+    width: 0;
+    height: 100%;
+    border: solid #cacaca 1px;
+    border-bottom: none;
+}
+
+.time_label {
+    position: absolute;
+    bottom: -15px;
+    font-size: 10px;
+    transform: translate(-50%, 0);
+}
+
+.schedule__event {
+    background: rgba(244, 164, 96, 0.5);
+    height: 100%;
+    width: 10px;
+    position: absolute;
+    border: brown 2px solid;
+    border-top: none;
+    border-bottom: none;
+    cursor: pointer;
+}
+
+.schedule__event_start-time,
+.schedule__event_end-time {
+    position: absolute;
+    font-size: 12px;
+    background: white;
+    padding: 1px;
+    border-radius: 3px;
+    z-index: 10;
+    opacity: 1;
+}
+
+.schedule__event_start-time {
+    top: 3px;
+    left: 3px;
+    transform-origin: 0 0;
+    transform: rotate(-90deg) translateX(-100%);
+}
+
+.schedule__event_end-time {
+    bottom: 3px;
+    right: 3px;
+    transform-origin: 100% 100%;
+    transform: rotate(-90deg) translateX(100%);
+}
+
+.schedule__weekday {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translate(-150%, -50%);
+    z-index: 10;
+}
+
+.schedule__legend {
+    display: flex;
+    align-items: center;
+    margin-left: 15px;
+}
+
+.schedule__legend_box {
+    background: rgba(244, 164, 96, 0.5);
+    border: brown 2px solid;
+    border-top: none;
+    border-bottom: none;
+    width: 15px;
+    height: 15px;
+    margin-right: 5px;
+}
+
+.bottom-control {
+    padding-top: 15px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.schedule .bottom-control {
+    margin-bottom: 20px;
+}
+
+.wrapper {
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 9999;
+}
+
+.schedule__form {
+    position: absolute;
+    background: white;
+    border-radius: 15px;
+    padding: 15px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: max-content;
+}
+
+select {
+    font-size: 16px;
+}
+
+.schedule__form textarea {
+    width: 100%;
+    height: 80px;
+    max-width: 500px;
+}
+
+.schedule__form h3 {
+    margin-bottom: 10px;
+}
+
+input, textarea, select {
+    padding: 2px;
+    border: gray solid 1px;
+    border-radius: 5px;
+}
+
+.schedule__form .bottom-control {
+    margin: 0;
+    padding: 0;
+}
+
+input[type=submit] {
+    margin: 0;
+}
+
+.close-button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translate(35%, -35%);
+    background: white;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.schedule__days-division {
+    width: 100%;
+    height: 0;
+    border-top: 2px gray dashed;
+}
+
+.schedule__time {
+    font-size: 14px;
+}
+
+.event-form {
+    display: grid;
+    background: white;
+    border-radius: 15px;
+    position: relative;
+    padding: 10px;
+}
+
+@media screen and (max-width: 770px)  {
+    .schedule__time {
+        font-size: 10px;
+    }
+}
