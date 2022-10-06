@@ -12,7 +12,6 @@ export default function StatChart({data}) {
                 <Tooltip/>
                 <Legend/>
                 <Line type="monotone" dataKey="incomes" stroke="#37D67A" activeDot={{ r: 8 }} />
-                <Line type="monotone" dataKey="incomes_planned" stroke="#0000FF" activeDot={{ r: 8 }} />
                 <Line type="monotone" dataKey="costs" stroke="#F47373" />
             </LineChart>
         </ResponsiveContainer>
