@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import {Button, Col, Container, Input, Row, Spacer, useInput} from "@nextui-org/react";
 import PageHeader from "../Utils/PageHeader/PageHeader";
 import {useDispatch, useSelector} from "react-redux";
@@ -14,6 +14,12 @@ export default function SettingsPage() {
     const endWork = useInput(settings.endWork);
     const defaultPricePerHour = useInput(settings.defaultPricePerHour);
     const dispatch = useDispatch();
+
+    useEffect(() => {
+        startWork.setValue(settings.startWork);
+        endWork.setValue(settings.endWork);
+        defaultPricePerHour.setValue(settings.defaultPricePerHour);
+    }, [settings.startWork, settings.endWork, settings.defaultPricePerHour]);
 
     const settingsHandler = () => {
        axios.put(API.settings, {start_work_hour: +startWork.value, end_work_hour: +endWork.value, default_price_per_hour: +defaultPricePerHour.value})
