@@ -1,6 +1,6 @@
-import React from "react";
+import React, {useCallback} from "react";
 import PageHeader from "../../Utils/PageHeader/PageHeader";
-import {AddCircle, Trash} from "iconsax-react";
+import {AddCircle, Edit, Trash} from "iconsax-react";
 import {Card, Col, Container, Loading, Row, Spacer, Text} from "@nextui-org/react";
 import useValue from "../../Utils/useValue";
 import axios from "axios";
@@ -10,6 +10,7 @@ import useInfiniteScroll from "react-infinite-scroll-hook";
 import moment from "moment";
 import {IconButton} from "../../Common/IconButton";
 import ModalAddRecord from "./ModalAddRecord";
+import ModalEditRecord from "./ModalEditRecord";
 
 export default function RecordsPage() {
     const records = useValue([]);
@@ -71,6 +72,23 @@ export default function RecordsPage() {
             })
     }
 
+    const editModalVisible = useValue(false);
+    const recordToEdit = useValue(null);
+
+    const onEdit = (record) => {
+        recordToEdit.setValue(record);
+        editModalVisible.setValue(true);
+    }
+
+    const updateRecord = useCallback((recordID, value) => {
+       const allRecords = records.value;
+       const toUpdateIdx = allRecords.findIndex(el => el.id === recordID);
+       if (toUpdateIdx === -1) {
+           return
+       }
+       allRecords[toUpdateIdx].value = value;
+    }, [records]);
+
     return (
         <>
             <PageHeader withBack title={"Расходы и доходы"} rightButton={{icon: <AddCircle  color="#37d67a"/>, handler: () => visibleModal.setValue(true)}}/>
@@ -99,10 +117,15 @@ export default function RecordsPage() {
                                     <Col>
                                         <Text b >{record.value} р</Text>
                                     </Col>
-                                    <Col css={{w: "30px"}}>
-                                        <IconButton css={{cursor: "pointer"}} onClick={() => onDelete(record)}>
-                                            <Trash size="28" color="#f47373"/>
-                                        </IconButton>
+                                    <Col css={{w: "170px"}}>
+                                        <Row justify={"space-between"} align={"center"}>
+                                            <IconButton css={{cursor: "pointer"}} onClick={() => onEdit(record)}>
+                                                <Edit size="28" color="#444"/>
+                                            </IconButton>
+                                            <IconButton css={{cursor: "pointer"}} onClick={() => onDelete(record)}>
+                                                <Trash size="28" color="#f47373"/>
+                                            </IconButton>
+                                        </Row>
                                     </Col>
                                 </Row>
                             </Card.Body>
@@ -118,6 +141,12 @@ export default function RecordsPage() {
                         </div>
                     </Row>}
                 <ModalAddRecord closeHandler={() => visibleModal.setValue(false)} visible={visibleModal.value} createHandler={onCreate}/>
+                {recordToEdit.value && <ModalEditRecord
+                                            closeHandler={() => editModalVisible.setValue(false)}
+                                            visible={editModalVisible.value}
+                                            record={recordToEdit.value}
+                                            updateRecord={updateRecord}/>
+                }
             </Container>
         </>
     );
