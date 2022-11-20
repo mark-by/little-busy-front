@@ -12,11 +12,12 @@ function ScheduleDay({weekday, year, month, day, times, events}, ref) {
     const navigate = useNavigate();
 
     useEffect(() => {
+        console.log(endRef.current.offsetLeft, endRef.current.offsetRight)
         if (startRef.current && endRef.current) {
-           setSecondCost((endRef.current.offsetLeft - startRef.current.offsetLeft) / (60 * 60));
+           setSecondCost((endRef.current.offsetLeft + endRef.current.offsetWidth - startRef.current.offsetLeft) / (60 * 60 * (times.length - 1)));
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [startRef.current, endRef.current])
+    }, [startRef.current?.offsetLeft, endRef.current?.offsetLeft])
 
     const startDayTime = moment({y: year, M: month - 1, d: day, h: times[0]})
     const now = moment();
@@ -53,9 +54,12 @@ function ScheduleDay({weekday, year, month, day, times, events}, ref) {
                     {times.map((tm, idx) => (
                         <div
                             key={idx}
-                            ref={idx === 0 ? startRef : idx === 1 ? endRef : null}
+                            ref={idx === 0 ? startRef : idx === times.length - 1 ? endRef : null}
                             onClick={e => navigate(`/schedule/new/${year}/${month}/${day}/${tm}`)}
-                            className="schedule__line"><div className={"time_label"}>{tm}</div></div>))}
+                            className="schedule__line">
+                            <div className={"time_label"}>{tm}</div>
+                        </div>))}
+
                     { (timeDiff < 24 && timeDiff >= 0) &&
                         <div
                             className={"schedule__line"}
