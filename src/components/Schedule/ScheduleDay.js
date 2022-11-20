@@ -12,7 +12,6 @@ function ScheduleDay({weekday, year, month, day, times, events}, ref) {
     const navigate = useNavigate();
 
     useEffect(() => {
-        console.log(endRef.current.offsetLeft, endRef.current.offsetRight)
         if (startRef.current && endRef.current) {
            setSecondCost((endRef.current.offsetLeft + endRef.current.offsetWidth - startRef.current.offsetLeft) / (60 * 60 * (times.length - 1)));
         }
